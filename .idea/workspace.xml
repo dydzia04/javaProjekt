@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="86ce478b-de7d-416a-9514-a028989989c6" name="Default Changelist" comment="" />
+    <list default="true" id="86ce478b-de7d-416a-9514-a028989989c6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/showAndSearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/showAndSearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/DatabaseOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DatabaseOperations.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,7 +64,15 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="mydb: schema" type="76f4a085:MysqlImplModel$Schema" />
         <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="Employees: table" type="285a2a93:MysqlImplModel$Table" />
+        <item name="Departaments: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="hibernate.cfg.xml/Hibernate" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="mydb: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="Jobs: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
@@ -78,7 +91,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1Wemgr6Iu9sMfgKnIjwxECypwj5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -90,6 +107,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="findjar.last.used.dir" value="$PROJECT_DIR$" />
@@ -157,7 +175,7 @@
       <workItem from="1579676872041" duration="3646000" />
       <workItem from="1579717625363" duration="4491000" />
       <workItem from="1579778709957" duration="3612000" />
-      <workItem from="1579782533715" duration="13491000" />
+      <workItem from="1579782533715" duration="16170000" />
     </task>
     <servers />
   </component>
@@ -179,25 +197,25 @@
     </state>
     <state x="618" y="187" width="498" height="377" key="FileChooserDialogImpl/0.27.1366.701@0.27.1366.701" timestamp="1579782776064" />
     <state x="724" y="206" width="424" height="484" key="FileChooserDialogImpl/0.900.1366.768/0.0.1600.900@0.0.1600.900" timestamp="1579517941239" />
-    <state width="1324" height="206" key="GridCell.Tab.0.bottom" timestamp="1579852452213">
+    <state width="1324" height="206" key="GridCell.Tab.0.bottom" timestamp="1579855554824">
       <screen x="0" y="27" width="1366" height="701" />
     </state>
-    <state width="1324" height="206" key="GridCell.Tab.0.bottom/0.27.1366.701@0.27.1366.701" timestamp="1579852452213" />
+    <state width="1324" height="206" key="GridCell.Tab.0.bottom/0.27.1366.701@0.27.1366.701" timestamp="1579855554824" />
     <state width="1558" height="229" key="GridCell.Tab.0.bottom/0.900.1366.768/0.0.1600.900@0.0.1600.900" timestamp="1579518611667" />
-    <state width="1324" height="206" key="GridCell.Tab.0.center" timestamp="1579852452212">
+    <state width="1324" height="206" key="GridCell.Tab.0.center" timestamp="1579855554823">
       <screen x="0" y="27" width="1366" height="701" />
     </state>
-    <state width="1324" height="206" key="GridCell.Tab.0.center/0.27.1366.701@0.27.1366.701" timestamp="1579852452212" />
+    <state width="1324" height="206" key="GridCell.Tab.0.center/0.27.1366.701@0.27.1366.701" timestamp="1579855554823" />
     <state width="1558" height="229" key="GridCell.Tab.0.center/0.900.1366.768/0.0.1600.900@0.0.1600.900" timestamp="1579518611667" />
-    <state width="1324" height="206" key="GridCell.Tab.0.left" timestamp="1579852452212">
+    <state width="1324" height="206" key="GridCell.Tab.0.left" timestamp="1579855554823">
       <screen x="0" y="27" width="1366" height="701" />
     </state>
-    <state width="1324" height="206" key="GridCell.Tab.0.left/0.27.1366.701@0.27.1366.701" timestamp="1579852452212" />
+    <state width="1324" height="206" key="GridCell.Tab.0.left/0.27.1366.701@0.27.1366.701" timestamp="1579855554823" />
     <state width="1558" height="229" key="GridCell.Tab.0.left/0.900.1366.768/0.0.1600.900@0.0.1600.900" timestamp="1579518611667" />
-    <state width="1324" height="206" key="GridCell.Tab.0.right" timestamp="1579852452212">
+    <state width="1324" height="206" key="GridCell.Tab.0.right" timestamp="1579855554824">
       <screen x="0" y="27" width="1366" height="701" />
     </state>
-    <state width="1324" height="206" key="GridCell.Tab.0.right/0.27.1366.701@0.27.1366.701" timestamp="1579852452212" />
+    <state width="1324" height="206" key="GridCell.Tab.0.right/0.27.1366.701@0.27.1366.701" timestamp="1579855554824" />
     <state width="1558" height="229" key="GridCell.Tab.0.right/0.900.1366.768/0.0.1600.900@0.0.1600.900" timestamp="1579518611667" />
     <state width="1324" height="204" key="GridCell.Tab.1.bottom" timestamp="1579696590485">
       <screen x="0" y="27" width="1366" height="701" />
@@ -240,9 +258,9 @@
       <screen x="0" y="27" width="1366" height="701" />
     </state>
     <state x="347" y="165" key="run.anything.popup/0.27.1366.701@0.27.1366.701" timestamp="1579677178625" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1579779541843">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1579854154853">
       <screen x="0" y="27" width="1366" height="701" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.27.1366.701@0.27.1366.701" timestamp="1579779541843" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.27.1366.701@0.27.1366.701" timestamp="1579854154853" />
   </component>
 </project>

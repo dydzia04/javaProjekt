@@ -1,6 +1,9 @@
 package main;
 
+import entity.Departament;
 import entity.Employee;
+import entity.Job;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -19,11 +22,6 @@ public class DatabaseOperations {
     try{
       factory = new Configuration().
           configure().buildSessionFactory();
-//          addPackage("entity").
-//          addAnnotatedClass(Employee.class).
-//          addAnnotatedClass(Departament.class).
-//          addAnnotatedClass(Job.class).
-//          buildSessionFactory();
     }
     catch (Throwable ex){
       System.out.println("Nie udało się stworzyć SessionFactory. "+ex);
@@ -49,7 +47,6 @@ public class DatabaseOperations {
     }
     return null;
   }
-
   public List getAllDepartaments(){
     session = factory.openSession();
     transaction = null;
@@ -68,7 +65,6 @@ public class DatabaseOperations {
     }
     return null;
   }
-
   public List getAllJobs(){
     session = factory.openSession();
     transaction = null;
@@ -87,7 +83,6 @@ public class DatabaseOperations {
     }
     return null;
   }
-
   public List findEmployeesByName( String name ){
     List temp = null;
     try {
@@ -110,7 +105,6 @@ public class DatabaseOperations {
     }
     return null;
   }
-
   public List findEmployeesBySurName( String surname ){
     List temp = null;
     try {
@@ -133,7 +127,6 @@ public class DatabaseOperations {
     }
     return null;
   }
-
   public List findEmployeesByID( int ID ){
     List temp = null;
     try {
@@ -157,18 +150,296 @@ public class DatabaseOperations {
     return null;
   }
 
-  //TODO: update
-  public void updateEmployeeFirstName( String firstName ){}
-  public void updateEmployeeSurName( String surName ){}
-  public void updateEmployeeIdDept( int idDept ){}
-  public void updateEmployeeIdJob( int idJob ){}
+  //TODO: check
+  // need to get ID for updating
+  public void updateEmployeeFirstName( Integer ID, String firstName ){
+    session = factory.openSession();
+    transaction = null;
 
-  //TODO: delete
-  public void deleteEmployee( int ID ){ // need to find employee matching data in GUI, then give this method his ID
+    try{
+      transaction = session.beginTransaction();
+      Employee employee = (Employee) session.get(Employee.class, ID);
+      employee.setFirstName(firstName);
+      session.update(employee);
+      transaction.commit();
+    }
+    catch ( HibernateException h ){
+      if( transaction!=null ) transaction.rollback();
+      h.printStackTrace();
+    }
+    finally {
+      session.close();
+    }
+  }
+  public void updateEmployeeSurName( Integer ID, String surName ){
+    session = factory.openSession();
+    transaction = null;
 
+    try{
+      transaction = session.beginTransaction();
+      Employee employee = (Employee) session.get(Employee.class, ID);
+      employee.setSurName(surName);
+      session.update(employee);
+      transaction.commit();
+    }
+    catch ( HibernateException h ){
+      if( transaction!=null ) transaction.rollback();
+      h.printStackTrace();
+    }
+    finally {
+      session.close();
+    }
+  }
+  public void updateEmployeeIdDept( Integer ID, int idDept ){
+    session = factory.openSession();
+    transaction = null;
+
+    try{
+      transaction = session.beginTransaction();
+      Employee employee = (Employee) session.get(Employee.class, ID);
+      employee.setIdDept(idDept);
+      session.update(employee);
+      transaction.commit();
+    }
+    catch ( HibernateException h ){
+      if( transaction!=null ) transaction.rollback();
+      h.printStackTrace();
+    }
+    finally {
+      session.close();
+    }
+  }
+  public void updateEmployeeIdJob( Integer ID, int idJob ){
+    session = factory.openSession();
+    transaction = null;
+
+    try{
+      transaction = session.beginTransaction();
+      Employee employee = (Employee) session.get(Employee.class, ID);
+      employee.setIdJob(idJob);
+      session.update(employee);
+      transaction.commit();
+    }
+    catch ( HibernateException h ){
+      if( transaction!=null ) transaction.rollback();
+      h.printStackTrace();
+    }
+    finally {
+      session.close();
+    }
   }
 
-  //TODO: create
-  
+  public void updateDepartamentAddress( Integer ID, String address ){
+    session = factory.openSession();
+    transaction = null;
 
+    try{
+      transaction = session.beginTransaction();
+      Departament departament = (Departament) session.get(Departament.class, ID);
+      departament.setAddress(address);
+      session.update(departament);
+      transaction.commit();
+    }
+    catch ( HibernateException h ){
+      if( transaction!=null ) transaction.rollback();
+      h.printStackTrace();
+    }
+    finally {
+      session.close();
+    }
+  }
+  public void updateDepartamentPhoneNumber( Integer ID, String phoneNumber ){
+    session = factory.openSession();
+    transaction = null;
+
+    try{
+      transaction = session.beginTransaction();
+      Departament departament = (Departament) session.get(Departament.class, ID);
+      departament.setPhoneNumber(phoneNumber);
+      session.update(departament);
+      transaction.commit();
+    }
+    catch ( HibernateException h ){
+      if( transaction!=null ) transaction.rollback();
+      h.printStackTrace();
+    }
+    finally {
+      session.close();
+    }
+  }
+  public void updateDepartamentEMail( Integer ID, String eMail ){
+    session = factory.openSession();
+    transaction = null;
+
+    try{
+      transaction = session.beginTransaction();
+      Departament departament = (Departament) session.get(Departament.class, ID);
+      departament.seteMail(eMail);
+      session.update(departament);
+      transaction.commit();
+    }
+    catch ( HibernateException h ){
+      if( transaction!=null ) transaction.rollback();
+      h.printStackTrace();
+    }
+    finally {
+      session.close();
+    }
+  }
+
+  public void updateJobName( Integer ID, String name ){
+    session = factory.openSession();
+    transaction = null;
+
+    try{
+      transaction = session.beginTransaction();
+      Job job = (Job) session.get(Job.class, ID);
+      job.setName(name);
+      session.update(job);
+      transaction.commit();
+    }
+    catch ( HibernateException h ){
+      if( transaction!=null ) transaction.rollback();
+      h.printStackTrace();
+    }
+    finally {
+      session.close();
+    }
+  }
+  public void updateJobSalary( Integer ID, int salary ){
+    session = factory.openSession();
+    transaction = null;
+
+    try{
+      transaction = session.beginTransaction();
+      Job job = (Job) session.get(Job.class, ID);
+      job.setSalary(salary);
+      session.update(job);
+      transaction.commit();
+    }
+    catch ( HibernateException h ){
+      if( transaction!=null ) transaction.rollback();
+      h.printStackTrace();
+    }
+    finally {
+      session.close();
+    }
+  }
+
+  //TODO: check
+  // need to find ID for deletion matching data in GUI, then give this method his ID
+  public void deleteEmployee( Integer ID ){
+    session = factory.openSession();
+    transaction = null;
+    try{
+      transaction = session.beginTransaction();
+      Employee employee = (Employee) session.get(Employee.class, ID);
+    }
+    catch ( HibernateException h ){
+      if (transaction!=null) transaction.rollback();
+      h.printStackTrace();
+    }
+    finally {
+      session.close();
+    }
+  }
+  public void deleteDepartament( Integer ID ){
+    session = factory.openSession();
+    transaction = null;
+    try{
+      transaction = session.beginTransaction();
+      Departament departament = (Departament) session.get(Departament.class, ID);
+    }
+    catch ( HibernateException h ){
+      if (transaction!=null) transaction.rollback();
+      h.printStackTrace();
+    }
+    finally {
+      session.close();
+    }
+  }
+  public void deleteJob( Integer ID ){
+    session = factory.openSession();
+    transaction = null;
+    try{
+      transaction = session.beginTransaction();
+      Job job = (Job) session.get(Job.class, ID);
+    }
+    catch ( HibernateException h ){
+      if (transaction!=null) transaction.rollback();
+      h.printStackTrace();
+    }
+    finally {
+      session.close();
+    }
+  }
+
+  //TODO: check
+  public Integer createEmployee( String firstName, String SurName, int idDept, int idJob ){
+    session = factory.openSession();
+    transaction = null;
+    Integer EmployeeID = null;
+
+    try{
+      Employee employee = new Employee();
+      employee.setFirstName(firstName);
+      employee.setSurName(SurName);
+      employee.setIdDept(idDept);
+      employee.setIdJob(idJob);
+      EmployeeID = (Integer) session.save(employee);
+      transaction.commit();
+    }
+    catch ( HibernateException h ){
+      if(transaction!=null) transaction.rollback();
+      h.printStackTrace();
+    }
+    finally {
+      session.close();
+    }
+
+    return EmployeeID;
+  }
+  public Integer createDepartament( String address, String phoneNumber, String eMail ){
+    session = factory.openSession();
+    transaction = null;
+    Integer DepartamentID = null;
+
+    try{
+      Departament departament = new Departament();
+      departament.setAddress(address);
+      departament.setPhoneNumber(phoneNumber);
+      departament.seteMail(eMail);
+      DepartamentID = (Integer) session.save(departament);
+      transaction.commit();
+    }
+    catch ( HibernateException h ){
+      if(transaction!=null) transaction.rollback();
+      h.printStackTrace();
+    }
+    finally {
+      session.close();
+    }
+    return DepartamentID;
+  }
+  public Integer createJob( String name, int baseSalary ){
+    session = factory.openSession();
+    transaction = null;
+    Integer JobID = null;
+
+    try{
+      Job job = new Job();
+      job.setName(name);
+      job.setSalary(baseSalary);
+      JobID = (Integer) session.save(job);
+      transaction.commit();
+    }
+    catch ( HibernateException h ){
+      if(transaction!=null) transaction.rollback();
+      h.printStackTrace();
+    }
+    finally {
+      session.close();
+    }
+    return JobID;
+  }
 }

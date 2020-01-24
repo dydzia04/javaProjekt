@@ -12,7 +12,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.showAndSearchController">
    <children>
-      <TableView prefHeight="332.0" prefWidth="630.0">
+      <TableView fx:id="databaseTable" prefHeight="332.0" prefWidth="630.0">
          <columns>
             <TableColumn prefWidth="44.0" text="ID" />
             <TableColumn prefWidth="106.0" text="Imię" />

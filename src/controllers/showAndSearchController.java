@@ -3,10 +3,7 @@ package controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import main.DatabaseOperations;
 
 import java.net.URL;
@@ -16,7 +13,13 @@ public class showAndSearchController implements Initializable {
 
   @FXML private ComboBox<String> tableComboBox;
   @FXML private TextField toFindTextField;
+
   @FXML private TableView databaseTable;
+  @FXML private TableColumn ID;
+  @FXML private TableColumn name;
+  @FXML private TableColumn surName;
+  @FXML private TableColumn position;
+  @FXML private TableColumn miscData; // TODO: add button showing more information
 
   DatabaseOperations DbOps = new DatabaseOperations();
 
