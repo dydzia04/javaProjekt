@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1aed8199-813c-4741-a63e-03d59029eb5d" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1Wekki1p6N5GNubZ7EytyjYUrjf" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../ukrainiec-20200120T105000Z-001/ukrainiec/ProjektDominika" />
+    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1aed8199-813c-4741-a63e-03d59029eb5d" name="Default Changelist" comment="" />
+      <created>1579517592500</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579517592500</updated>
+      <workItem from="1579517594110" duration="42000" />
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="632" y="341" width="326" height="216" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1579517607204">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="632" y="341" width="326" height="216" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.900.1366.768/0.0.1600.900@0.0.1600.900" timestamp="1579517607204" />
+    <state x="583" y="207" width="424" height="484" key="FileChooserDialogImpl" timestamp="1579517633697">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="583" y="207" width="424" height="484" key="FileChooserDialogImpl/0.900.1366.768/0.0.1600.900@0.0.1600.900" timestamp="1579517633697" />
+  </component>
+</project>

@@ -1,0 +1,47 @@
+<hibernate-mapping xmlns="http://www.hibernate.org/xsd/hibernate-mapping">
+    <class name="entity.Employee" table="Employees">
+
+        <meta attribute="description">
+            Employee class
+        </meta>
+
+        <id name="id" type="int" column="idEmployees">
+            <generator class="native"/>
+        </id>
+
+        <property name="firstName"  column="firstName"  type="string"/>
+        <property name="surName"    column="surName"    type="string"/>
+        <property name="idDept"     column="idDept"     type="int"/>
+        <property name="idJob"      column="idJob"      type="int"/>
+
+    </class>
+    <class name="entity.Job" table="Jobs">
+
+        <meta attribute="description">
+            Employee class
+        </meta>
+
+        <id name="id" type="int" column="idJobs">
+            <generator class="native"/>
+        </id>
+
+        <property name="name"   column="name"       type="string"/>
+        <property name="salary" column="baseSalary"  type="int"/>
+
+    </class>
+    <class name="entity.Departament" table="Departaments">
+
+        <meta attribute="description">
+            Employee class
+        </meta>
+
+        <id name="id" type="int" column="idDepartaments">
+            <generator class="native"/>
+        </id>
+
+        <property name="address"     column="address"     type="string"/>
+        <property name="phoneNumber" column="phoneNumber" type="string"/>
+        <property name="eMail"       column="eMail"       type="string"/>
+
+    </class>
+</hibernate-mapping>
