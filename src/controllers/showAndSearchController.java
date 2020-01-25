@@ -34,8 +34,6 @@ public class showAndSearchController implements Initializable {
     //TODO: zabezpieczenie
     String value = tableComboBox.getValue();
     String textToFind = toFindTextField.getText();
-    System.out.println(value);
-    System.out.println(textToFind);
 
     if ( value == null ){
       Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -52,13 +50,14 @@ public class showAndSearchController implements Initializable {
 
         int id = Integer.parseInt(textToFind);
         List emp = DbOps.findEmployeesByID(id);
-        String output = null;
+        System.out.println(emp);
+        String output = String.valueOf("test " + emp);
 
-        Iterator iterator = emp.listIterator();
-        while (iterator.hasNext()){
-          Employee employee = (Employee) iterator.next();
-          output += employee.toString()+"\n";
-        }
+//        Iterator iterator = emp.listIterator();
+//        while (iterator.hasNext()){
+//          Employee employee = (Employee) iterator.next();
+//          output += employee.toString()+"\n";
+//        }
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Wynik wyszukania");

@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class DatabaseOperations {
     }
   }
 
+  // --- GET ---
   public List getAllEmployees(){
     session = factory.openSession();
     transaction = null;
@@ -37,12 +39,10 @@ public class DatabaseOperations {
       List employees = session.createQuery("FROM Employee").list();
       transaction.commit();
       return employees;
-    }
-    catch (Exception e){
-      if (transaction!=null) transaction.rollback();
+    } catch (Exception e) {
+      if (transaction != null) transaction.rollback();
       e.printStackTrace();
-    }
-    finally {
+    } finally {
       session.close();
     }
     return null;
@@ -73,79 +73,79 @@ public class DatabaseOperations {
       List jobs = session.createQuery("FROM Job ").list();
       transaction.commit();
       return jobs;
-    }
-    catch (Exception e){
-      if (transaction!=null) transaction.rollback();
+    } catch (Exception e) {
+      if (transaction != null) transaction.rollback();
       e.printStackTrace();
-    }
-    finally {
+    } finally {
       session.close();
     }
     return null;
   }
-  public List findEmployeesByName( String name ){
-    List temp = null;
+
+  // --- FIND ---
+  public List findEmployeesByName(String name) {
+    List temp = new ArrayList();
     try {
       List empl = this.getAllEmployees();
       Iterator iterator = empl.listIterator();
       Employee employee = null;
 
-      while ( iterator.hasNext() ){
-        if ( (employee = (Employee) iterator.next()).getFirstName().equals(name) ){
+      while (iterator.hasNext()) {
+        if ((employee = (Employee) iterator.next()).getFirstName().equals(name)) {
           System.out.println(employee);
-          empl.add(employee);
+          temp.add(employee);
         }
       }
 
       return temp;
-    }
-    catch (Exception e){
-      System.err.println("Ups");
-      //e.printStackTrace();
+    } catch (Exception e) {
+      System.err.println("Name search error");
+      e.printStackTrace();
+      e.getCause();
     }
     return null;
   }
   public List findEmployeesBySurName( String surname ){
-    List temp = null;
+    List temp = new ArrayList();
     try {
       List empl = this.getAllEmployees();
       Iterator iterator = empl.listIterator();
       Employee employee = null;
 
-      while ( iterator.hasNext() ){
-        if ( (employee = (Employee) iterator.next()).getSurName().equals(surname) ){
+      while (iterator.hasNext()) {
+        if ((employee = (Employee) iterator.next()).getSurName().equals(surname)) {
           System.out.println(employee);
-          empl.add(employee);
+          temp.add(employee);
         }
       }
 
       return temp;
-    }
-    catch (Exception e){
-      System.err.println("Ups");
-      //e.printStackTrace();
+    } catch (Exception e) {
+      System.err.println("Surname search error");
+      e.printStackTrace();
+      e.getCause();
     }
     return null;
   }
   public List findEmployeesByID( int ID ){
-    List temp = null;
+    List temp = new ArrayList();
     try {
       List empl = this.getAllEmployees();
       Iterator iterator = empl.listIterator();
       Employee employee = null;
 
-      while ( iterator.hasNext() ){
-        if ( (employee = (Employee) iterator.next()).getId() == ID ){
+      while (iterator.hasNext()) {
+        employee = (Employee) iterator.next();
+        if (employee.getId() == ID) {
           System.out.println(employee);
-          empl.add(employee);
+          temp.add(employee);
         }
       }
-
       return temp;
-    }
-    catch (Exception e){
-      System.err.println("Ups");
-      //e.printStackTrace();
+    } catch (Exception e) {
+      System.err.println("ID search error");
+      e.printStackTrace();
+      e.getCause();
     }
     return null;
   }
