@@ -1,6 +1,6 @@
 package main;
 
-import entity.Departament;
+import entity.Department;
 import entity.Employee;
 import entity.Job;
 import org.hibernate.HibernateException;
@@ -52,7 +52,7 @@ public class DatabaseOperations {
     transaction = null;
     try {
       transaction = session.beginTransaction();
-      List departaments = session.createQuery("FROM Departament ").list();
+      List departaments = session.createQuery("FROM Department ").list();
       transaction.commit();
       return departaments;
     }
@@ -86,9 +86,9 @@ public class DatabaseOperations {
   public List findEmployeesByName(String name) {
     List temp = new ArrayList();
     try {
-      List empl = this.getAllEmployees();
-      Iterator iterator = empl.listIterator();
-      Employee employee = null;
+      List employees = this.getAllEmployees();
+      Iterator iterator = employees.listIterator();
+      Employee employee;
 
       while (iterator.hasNext()) {
         if ((employee = (Employee) iterator.next()).getFirstName().equals(name)) {
@@ -108,9 +108,9 @@ public class DatabaseOperations {
   public List findEmployeesBySurName( String surname ){
     List temp = new ArrayList();
     try {
-      List empl = this.getAllEmployees();
-      Iterator iterator = empl.listIterator();
-      Employee employee = null;
+      List employees = this.getAllEmployees();
+      Iterator iterator = employees.listIterator();
+      Employee employee;
 
       while (iterator.hasNext()) {
         if ((employee = (Employee) iterator.next()).getSurName().equals(surname)) {
@@ -130,9 +130,9 @@ public class DatabaseOperations {
   public List findEmployeesByID( int ID ){
     List temp = new ArrayList();
     try {
-      List empl = this.getAllEmployees();
-      Iterator iterator = empl.listIterator();
-      Employee employee = null;
+      List employees = this.getAllEmployees();
+      Iterator iterator = employees.listIterator();
+      Employee employee;
 
       while (iterator.hasNext()) {
         employee = (Employee) iterator.next();
@@ -158,7 +158,7 @@ public class DatabaseOperations {
 
     try{
       transaction = session.beginTransaction();
-      Employee employee = (Employee) session.get(Employee.class, ID);
+      Employee employee = session.get(Employee.class, ID);
       employee.setFirstName(firstName);
       session.update(employee);
       transaction.commit();
@@ -177,7 +177,7 @@ public class DatabaseOperations {
 
     try{
       transaction = session.beginTransaction();
-      Employee employee = (Employee) session.get(Employee.class, ID);
+      Employee employee = session.get(Employee.class, ID);
       employee.setSurName(surName);
       session.update(employee);
       transaction.commit();
@@ -196,7 +196,7 @@ public class DatabaseOperations {
 
     try{
       transaction = session.beginTransaction();
-      Employee employee = (Employee) session.get(Employee.class, ID);
+      Employee employee = session.get(Employee.class, ID);
       employee.setIdDept(idDept);
       session.update(employee);
       transaction.commit();
@@ -215,7 +215,7 @@ public class DatabaseOperations {
 
     try{
       transaction = session.beginTransaction();
-      Employee employee = (Employee) session.get(Employee.class, ID);
+      Employee employee = session.get(Employee.class, ID);
       employee.setIdJob(idJob);
       session.update(employee);
       transaction.commit();
@@ -229,60 +229,56 @@ public class DatabaseOperations {
     }
   }
 
-  public void updateDepartamentAddress( Integer ID, String address ){
+  public void updateDepartmentAddress(Integer ID, String address) {
     session = factory.openSession();
     transaction = null;
 
-    try{
+    try {
       transaction = session.beginTransaction();
-      Departament departament = (Departament) session.get(Departament.class, ID);
-      departament.setAddress(address);
-      session.update(departament);
+      Department department = session.get(Department.class, ID);
+      department.setAddress(address);
+      session.update(department);
       transaction.commit();
-    }
-    catch ( HibernateException h ){
-      if( transaction!=null ) transaction.rollback();
+    } catch (HibernateException h) {
+      if (transaction != null) transaction.rollback();
       h.printStackTrace();
-    }
-    finally {
+    } finally {
       session.close();
     }
   }
-  public void updateDepartamentPhoneNumber( Integer ID, String phoneNumber ){
+
+  public void updateDepartmentPhoneNumber(Integer ID, String phoneNumber) {
     session = factory.openSession();
     transaction = null;
 
-    try{
+    try {
       transaction = session.beginTransaction();
-      Departament departament = (Departament) session.get(Departament.class, ID);
-      departament.setPhoneNumber(phoneNumber);
-      session.update(departament);
+      Department department = session.get(Department.class, ID);
+      department.setPhoneNumber(phoneNumber);
+      session.update(department);
       transaction.commit();
-    }
-    catch ( HibernateException h ){
-      if( transaction!=null ) transaction.rollback();
+    } catch (HibernateException h) {
+      if (transaction != null) transaction.rollback();
       h.printStackTrace();
-    }
-    finally {
+    } finally {
       session.close();
     }
   }
-  public void updateDepartamentEMail( Integer ID, String eMail ){
+
+  public void updateDepartmentEMail(Integer ID, String eMail) {
     session = factory.openSession();
     transaction = null;
 
-    try{
+    try {
       transaction = session.beginTransaction();
-      Departament departament = (Departament) session.get(Departament.class, ID);
-      departament.seteMail(eMail);
-      session.update(departament);
+      Department department = session.get(Department.class, ID);
+      department.seteMail(eMail);
+      session.update(department);
       transaction.commit();
-    }
-    catch ( HibernateException h ){
-      if( transaction!=null ) transaction.rollback();
+    } catch (HibernateException h) {
+      if (transaction != null) transaction.rollback();
       h.printStackTrace();
-    }
-    finally {
+    } finally {
       session.close();
     }
   }
@@ -293,7 +289,7 @@ public class DatabaseOperations {
 
     try{
       transaction = session.beginTransaction();
-      Job job = (Job) session.get(Job.class, ID);
+      Job job = session.get(Job.class, ID);
       job.setName(name);
       session.update(job);
       transaction.commit();
@@ -312,7 +308,7 @@ public class DatabaseOperations {
 
     try{
       transaction = session.beginTransaction();
-      Job job = (Job) session.get(Job.class, ID);
+      Job job = session.get(Job.class, ID);
       job.setSalary(salary);
       session.update(job);
       transaction.commit();
@@ -331,30 +327,27 @@ public class DatabaseOperations {
   public void deleteEmployee( Integer ID ){
     session = factory.openSession();
     transaction = null;
-    try{
+    try {
       transaction = session.beginTransaction();
-      Employee employee = (Employee) session.get(Employee.class, ID);
-    }
-    catch ( HibernateException h ){
-      if (transaction!=null) transaction.rollback();
+      Employee employee = session.get(Employee.class, ID);
+    } catch (HibernateException h) {
+      if (transaction != null) transaction.rollback();
       h.printStackTrace();
-    }
-    finally {
+    } finally {
       session.close();
     }
   }
-  public void deleteDepartament( Integer ID ){
+
+  public void deleteDepartment(Integer ID) {
     session = factory.openSession();
     transaction = null;
-    try{
+    try {
       transaction = session.beginTransaction();
-      Departament departament = (Departament) session.get(Departament.class, ID);
-    }
-    catch ( HibernateException h ){
-      if (transaction!=null) transaction.rollback();
+      Department department = session.get(Department.class, ID);
+    } catch (HibernateException h) {
+      if (transaction != null) transaction.rollback();
       h.printStackTrace();
-    }
-    finally {
+    } finally {
       session.close();
     }
   }
@@ -363,7 +356,7 @@ public class DatabaseOperations {
     transaction = null;
     try{
       transaction = session.beginTransaction();
-      Job job = (Job) session.get(Job.class, ID);
+      Job job = session.get(Job.class, ID);
     }
     catch ( HibernateException h ){
       if (transaction!=null) transaction.rollback();
@@ -380,7 +373,7 @@ public class DatabaseOperations {
     transaction = null;
     Integer EmployeeID = null;
 
-    try{
+    try {
       Employee employee = new Employee();
       employee.setFirstName(firstName);
       employee.setSurName(SurName);
@@ -388,38 +381,35 @@ public class DatabaseOperations {
       employee.setIdJob(idJob);
       EmployeeID = (Integer) session.save(employee);
       transaction.commit();
-    }
-    catch ( HibernateException h ){
-      if(transaction!=null) transaction.rollback();
+    } catch (HibernateException h) {
+      if (transaction != null) transaction.rollback();
       h.printStackTrace();
-    }
-    finally {
+    } finally {
       session.close();
     }
 
     return EmployeeID;
   }
-  public Integer createDepartament( String address, String phoneNumber, String eMail ){
+
+  public Integer createDepartment(String address, String phoneNumber, String eMail) {
     session = factory.openSession();
     transaction = null;
-    Integer DepartamentID = null;
+    Integer DepartmentID = null;
 
-    try{
-      Departament departament = new Departament();
-      departament.setAddress(address);
-      departament.setPhoneNumber(phoneNumber);
-      departament.seteMail(eMail);
-      DepartamentID = (Integer) session.save(departament);
+    try {
+      Department department = new Department();
+      department.setAddress(address);
+      department.setPhoneNumber(phoneNumber);
+      department.seteMail(eMail);
+      DepartmentID = (Integer) session.save(department);
       transaction.commit();
-    }
-    catch ( HibernateException h ){
-      if(transaction!=null) transaction.rollback();
+    } catch (HibernateException h) {
+      if (transaction != null) transaction.rollback();
       h.printStackTrace();
-    }
-    finally {
+    } finally {
       session.close();
     }
-    return DepartamentID;
+    return DepartmentID;
   }
   public Integer createJob( String name, int baseSalary ){
     session = factory.openSession();

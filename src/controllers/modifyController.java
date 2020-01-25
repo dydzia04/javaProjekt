@@ -36,7 +36,7 @@ public class modifyController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    //TODO: read employees as {name, surname} to choicebox
-    //TODO: read employee data to choicebox pools
+    //TODO: read employees as {name, surname} to choice box
+    //TODO: read employee data to choice box pools
   }
 }

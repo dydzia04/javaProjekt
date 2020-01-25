@@ -17,17 +17,29 @@ import java.util.ResourceBundle;
 
 public class showAndSearchController implements Initializable {
 
-  @FXML private ComboBox<String> tableComboBox;
-  @FXML private TextField toFindTextField;
+  @FXML
+  private ComboBox<String> tableComboBox;
+  @FXML
+  private TextField toFindTextField;
 
-  @FXML private TableView databaseTable;
-  @FXML private TableColumn ID;
-  @FXML private TableColumn name;
-  @FXML private TableColumn surName;
-  @FXML private TableColumn position;
-  @FXML private TableColumn miscData; // TODO: add button showing more information
+  @FXML
+  private TableView<ShowEmployeeData> databaseTable;
+  @SuppressWarnings("FieldCanBeLocal")
+  @FXML
+  private TableColumn<ShowEmployeeData, Integer> ID;
+  @SuppressWarnings("FieldCanBeLocal")
+  @FXML
+  private TableColumn<ShowEmployeeData, String> name;
+  @SuppressWarnings("FieldCanBeLocal")
+  @FXML
+  private TableColumn<ShowEmployeeData, String> surName;
+  @SuppressWarnings("FieldCanBeLocal")
+  @FXML
+  private TableColumn<ShowEmployeeData, String> position;
+  @FXML
+  private TableColumn<ShowEmployeeData, Integer> miscData; // TODO: add button showing more information
 
-  DatabaseOperations DbOps = new DatabaseOperations();
+  final DatabaseOperations DbOps = new DatabaseOperations();
 
   @FXML
   void searchForSomeone(ActionEvent event) {
@@ -35,87 +47,80 @@ public class showAndSearchController implements Initializable {
     String value = tableComboBox.getValue();
     String textToFind = toFindTextField.getText();
 
-    if ( value == null ){
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Błędne wprowadzenie");
-      alert.setHeaderText("Niepoprawna opcja");
-      alert.setContentText("Proszę wybrać odpowiednią wartość z listy rozwijanej.");
+    createAlertForEmptyString(value);
 
-      alert.showAndWait();
-    }
+    if (!toFindTextField.getText().isEmpty()) {
 
-    if( !toFindTextField.getText().isEmpty() ){
-
-      if ( value.equals("ID") ){
-
-        int id = Integer.parseInt(textToFind);
-        List emp = DbOps.findEmployeesByID(id);
-        System.out.println(emp);
-        String output = String.valueOf("test " + emp);
-
-//        Iterator iterator = emp.listIterator();
-//        while (iterator.hasNext()){
-//          Employee employee = (Employee) iterator.next();
-//          output += employee.toString()+"\n";
-//        }
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Wynik wyszukania");
-        alert.setHeaderText("Znaleziono pracownika.");
-        alert.setContentText(output);
-
-        alert.showAndWait();
-      }
-
-      else if ( value.equals("Imię") ){
-        List emp = DbOps.findEmployeesByName(textToFind);
-        String output = null;
-
-        Iterator iterator = emp.listIterator();
-
-        while (iterator.hasNext()){
-          Employee employee = (Employee) iterator.next();
-          output += employee.toString()+"\n";
+      switch (value) {
+        case "ID": {
+          int id = Integer.parseInt(textToFind);
+          List emp = DbOps.findEmployeesByID(id);
+          this.createAlertForSearch(emp);
+          break;
         }
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Wynik wyszukania");
-        alert.setHeaderText("Znaleziono pracownika.");
-        alert.setContentText(output);
-
-        alert.showAndWait();
-      }
-
-      else if ( value.equals("Nazwisko") ){
-        List emp = DbOps.findEmployeesBySurName(textToFind);
-        String output = null;
-
-        Iterator iterator = emp.listIterator();
-        while (iterator.hasNext()){
-          Employee employee = (Employee) iterator.next();
-          output += employee.toString()+"\n";
+        case "Imię": {
+          List emp = DbOps.findEmployeesByName(textToFind);
+          this.createAlertForSearch(emp);
+          break;
         }
+        case "Nazwisko": {
+          List emp = DbOps.findEmployeesBySurName(textToFind);
+          this.createAlertForSearch(emp);
+          break;
+        }
+        default: {
+          Alert alert = new Alert(Alert.AlertType.ERROR);
+          alert.setTitle("Błędne wprowadzenie");
+          alert.setHeaderText("Puste pole tekstowe");
+          alert.setContentText("Proszę wprowadzić odpowiednia wartość.");
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Wynik wyszukania");
-        alert.setHeaderText("Znaleziono pracownika.");
-        alert.setContentText(output);
-
-        alert.showAndWait();
+          alert.showAndWait();
+        }
       }
-
-    }
-    else {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Błędne wprowadzenie");
-      alert.setHeaderText("Puste pole tekstowe");
-      alert.setContentText("Proszę wprowadzić odpowiednia wartość.");
-
-      alert.showAndWait();
     }
   }
 
-  void updateTableContent(){
+  void createAlertForSearch(List emp) {
+    if (emp.isEmpty()) {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Wynik wyszukiwania");
+      alert.setHeaderText("Nie znaleziono.");
+      alert.setContentText("Nie znaleziono pracownika o podanych danych.");
+
+      alert.showAndWait();
+      return;
+    }
+    String output = null;
+
+    Iterator iterator = emp.listIterator();
+
+    while (iterator.hasNext()) {
+      Employee employee = (Employee) iterator.next();
+      //noinspection StringConcatenationInLoop
+      output += employee.toString() + "\n";
+    }
+
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setTitle("Wynik wyszukania");
+    alert.setHeaderText("Znaleziono pracownika.");
+    alert.setContentText(output);
+
+    alert.showAndWait();
+  }
+
+  void createAlertForEmptyString(String str) {
+    if (!str.isEmpty()) {
+      return;
+    }
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+    alert.setTitle("Błędne wprowadzenie");
+    alert.setHeaderText("Niepoprawna opcja");
+    alert.setContentText("Proszę wybrać odpowiednią wartość z listy rozwijanej.");
+
+    alert.showAndWait();
+  }//TODO: make it work, doesn't show anything
+
+  void updateTableContent() {
     //TODO: pobranie z DbOps danych, dodanie ich do tabeli
     List employees = DbOps.getAllEmployees();
     List jobs = DbOps.getAllJobs();

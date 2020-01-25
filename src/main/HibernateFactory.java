@@ -10,7 +10,6 @@ public class HibernateFactory {
     StandardServiceRegistryBuilder registryBuilder = new StandardServiceRegistryBuilder()
             .applySettings(configuration
                     .getProperties());
-    SessionFactory sessionFactory = configuration.buildSessionFactory(registryBuilder.build());
-    return sessionFactory;
+    return configuration.buildSessionFactory(registryBuilder.build());
   }
 }

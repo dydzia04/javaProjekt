@@ -24,7 +24,7 @@
 
 
         <mapping class="entity.Employee"/>
-        <mapping class="entity.Departament"/>
+        <mapping class="entity.Department"/>
         <mapping class="entity.Job"/>
         <!-- <mapping resource="mapping.hbm.xml"/> -->
 
