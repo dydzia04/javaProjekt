@@ -1,5 +1,6 @@
 package controllers;
 
+import entity.Department;
 import entity.Employee;
 import entity.Job;
 import entity.ShowEmployeeData;
@@ -37,13 +38,13 @@ public class showAndSearchController implements Initializable {
   @FXML
   private TableColumn<ShowEmployeeData, String> position;
   @FXML
-  private TableColumn<ShowEmployeeData, Integer> miscData; // TODO: add button showing more information
+  private TableColumn<ShowEmployeeData, Integer> miscData;
 
   final DatabaseOperations DbOps = new DatabaseOperations();
 
   @FXML
   void searchForSomeone(ActionEvent event) {
-    //TODO: zabezpieczenie
+    //TODO: secure input
     String value = tableComboBox.getValue();
     String textToFind = toFindTextField.getText();
 
@@ -81,6 +82,7 @@ public class showAndSearchController implements Initializable {
   }
 
   void createAlertForSearch(List emp) {
+    databaseTable.getSelectionModel().clearSelection();
     if (emp.isEmpty()) {
       Alert alert = new Alert(Alert.AlertType.ERROR);
       alert.setTitle("Wynik wyszukiwania");
@@ -90,17 +92,29 @@ public class showAndSearchController implements Initializable {
       alert.showAndWait();
       return;
     }
-    String output = null;
+    String output = "";
 
     Iterator iterator = emp.listIterator();
+    int found = 0;
 
     while (iterator.hasNext()) {
       Employee employee = (Employee) iterator.next();
       //noinspection StringConcatenationInLoop
-      output += employee.toString() + "\n";
+      found = employee.getId() - 1;
+      databaseTable.requestFocus();
+      databaseTable.getSelectionModel().select(found);
+      databaseTable.getFocusModel().focus(found);
+
+      output += "ID: " + employee.getId() + "\n";
+      output += "Imię: " + employee.getFirstName() + "\n";
+      output += "Nazwisko: " + employee.getSurName() + "\n";
     }
 
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+    alert.setResizable(true);
+    alert.getDialogPane().setPrefSize(480, 320);
+
     alert.setTitle("Wynik wyszukania");
     alert.setHeaderText("Znaleziono pracownika.");
     alert.setContentText(output);
@@ -120,15 +134,9 @@ public class showAndSearchController implements Initializable {
     alert.showAndWait();
   }//TODO: make it work, doesn't show anything
 
-  void updateTableContent() {
-    //TODO: pobranie z DbOps danych, dodanie ich do tabeli
-    List employees = DbOps.getAllEmployees();
-    List jobs = DbOps.getAllJobs();
-
-    System.out.println(employees);
-    System.out.println(jobs);
-
+  void initalizeTable() {
     databaseTable.getColumns().clear();
+    databaseTable.getItems().clear();
 
     ID = new TableColumn("ID");
     ID.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -140,36 +148,56 @@ public class showAndSearchController implements Initializable {
     surName.setCellValueFactory(new PropertyValueFactory<>("surName"));
 
     position = new TableColumn("Pozycja");
-    position.setCellValueFactory(new PropertyValueFactory<>("name"));
+    position.setCellValueFactory(new PropertyValueFactory<>("jobName"));
 
-    //TODO: add button inside column for more info
+    miscData = new TableColumn<>("Więcej informacji");
+    miscData.setCellValueFactory(new PropertyValueFactory<>("more"));
 
-    databaseTable.getColumns().addAll(ID, name, surName, position);
+    databaseTable.getColumns().addAll(ID, name, surName, position, miscData);
+  }
+
+  void updateTableContent() {
+    List employees = DbOps.getAllEmployees();
+    List jobs = DbOps.getAllJobs();
+    List depts = DbOps.getAllDepartaments();
+
+    initalizeTable();
 
     Iterator iterator = employees.iterator();
 
-    while ( iterator.hasNext() ){
-      ShowEmployeeData data = new ShowEmployeeData();
+    while (iterator.hasNext()) {
       Employee e = (Employee) iterator.next();
+      ShowEmployeeData data = new ShowEmployeeData();
 
-      data.setId( e.getId() );
-      data.setFirstName( e.getFirstName() );
-      data.setSurName( e.getSurName() );
+      data.setId(e.getId());
+      data.setFirstName(e.getFirstName());
+      data.setSurName(e.getSurName());
+
       Iterator iteratorJob = jobs.iterator();
-
-      while ( iteratorJob.hasNext() ){
+      while (iteratorJob.hasNext()) {
         Job j = (Job) iteratorJob.next();
-        if ( e.getIdJob() == j.getId() ) data.setName(j.getName());
+        if (e.getIdJob() == j.getId()) {
+          data.setJobName(j.getName());
+          data.setSalary(j.getSalary());
+        }
       }
 
+      Iterator iteratorDept = depts.iterator();
+      while (iteratorDept.hasNext()) {
+        Department d = (Department) iteratorDept.next();
+        if (e.getIdDept() == d.getId()) {
+          data.setAddress(d.getAddress());
+          data.setPhoneNumber(d.getPhoneNumber());
+          data.seteMail(d.geteMail());
+        }
+      }
       databaseTable.getItems().add(data);
-      //TODO: add to columns
     }
-
   }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    databaseTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     tableComboBox.getItems().setAll("ID", "Imię", "Nazwisko");
     updateTableContent();
   }

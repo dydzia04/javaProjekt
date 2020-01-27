@@ -13,30 +13,34 @@ import java.util.ResourceBundle;
 public class modifyController implements Initializable {
 
   @FXML private TextField nameText;
-  @FXML private TextField surnameText;
-  @FXML private Button choosePositionBtn;
-  @FXML private Button chooseWorkplaceBtn;
-  @FXML private Button saveNewEmployeeBtn;
-  @FXML private ChoiceBox<?> employeeList;
+	@FXML
+	private TextField surnameText;
+	@FXML
+	private Button choosePositionBtn;
+	@FXML
+	private Button chooseWorkplaceBtn;
+	@FXML
+	private Button saveNewEmployeeBtn;
+	@FXML
+	private ChoiceBox<?> employeeList;
 
-  @FXML
-  void saveEmployee(ActionEvent event) {
-    //TODO: update employee
-  }
+	@FXML
+	void saveEmployee(ActionEvent event) {
+	}//TODO: update employee
 
-  @FXML
-  void showSetPosition(ActionEvent event) {
+	@FXML
+	void showSetPosition(ActionEvent event) {
 
-  }
+	}//TODO: read positions and put it inside combo box
 
-  @FXML
-  void showSetWorkplace(ActionEvent event) {
+	@FXML
+	void showSetWorkplace(ActionEvent event) {
 
-  }
+	}//TODO: read workplaces and put it inside combo box
 
-  @Override
-  public void initialize(URL location, ResourceBundle resources) {
-    //TODO: read employees as {name, surname} to choice box
-    //TODO: read employee data to choice box pools
-  }
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		//TODO: read employees as {name, surname} to choice box
+		//TODO: read employee data to choice box pools
+	}
 }

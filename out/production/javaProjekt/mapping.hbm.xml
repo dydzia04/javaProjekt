@@ -29,7 +29,7 @@
         <property name="salary" column="baseSalary"  type="int"/>
 
     </class>
-    <class name="entity.Departament" table="Departaments">
+    <class name="entity.Department" table="Departaments">
 
         <meta attribute="description">
             Employee class
@@ -39,7 +39,7 @@
             <generator class="native"/>
         </id>
 
-        <property name="address"     column="address"     type="string"/>
+        <property name="address" column="address" type="string"/>
         <property name="phoneNumber" column="phoneNumber" type="string"/>
         <property name="eMail"       column="eMail"       type="string"/>
 

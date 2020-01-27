@@ -3,7 +3,7 @@ package entity;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
-public class ShowEmployeeData {
+public class DeleteEmployeeData {
 	private Button more; // TODO: wyśrodkować, zmienić ikonę na jakąś ładną
 	private int id;
 	private String firstName;
@@ -14,7 +14,7 @@ public class ShowEmployeeData {
 	private String phoneNumber;
 	private String eMail;
 
-	public ShowEmployeeData(Button more, int id, String firstName, String surName, String jobName, int salary, String address, String phoneNumber, String eMail) {
+	public DeleteEmployeeData(Button more, int id, String firstName, String surName, String jobName, int salary, String address, String phoneNumber, String eMail) {
 		this.more = more;
 		this.id = id;
 		this.firstName = firstName;
@@ -26,9 +26,9 @@ public class ShowEmployeeData {
 		this.eMail = eMail;
 	}
 
-	public ShowEmployeeData() {
+	public DeleteEmployeeData() {
 		this.more = new Button("Więcej");
-		this.more.setOnAction(event -> {
+		this.more.setOnAction(event -> { //TODO: add delete functionality, make alert a confirmation
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
 			alert.setTitle("ID: " + this.id);
 			alert.setHeaderText(this.firstName + " " + this.surName);

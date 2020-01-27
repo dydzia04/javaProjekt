@@ -1,34 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="630.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-  <tabs>
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0"
+         prefWidth="630.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1"
+         xmlns:fx="http://javafx.com/fxml/1">
     <Tab text="Wyświetl Pracowników">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-         <fx:include source="showAndSearchDatabase.fxml" />
-      </content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+        <fx:include source="showAndSearchDatabase.fxml"/>
     </Tab>
     <Tab text="Dodaj">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-         <fx:include source="addToDatabase.fxml" />
-      </content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+        <fx:include source="addToDatabase.fxml"/>
     </Tab>
-     <Tab text="Usuń">
-        <content>
-           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-           <fx:include source="deleteFromDatabase.fxml" />
-        </content>
-     </Tab>
-     <Tab text="Modyfikuj">
-        <content>
-           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-           <fx:include source="modifyDatabaseRecord.fxml" />
-        </content>
-     </Tab>
-  </tabs>
+    <Tab text="Usuń">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+        <fx:include source="deleteFromDatabase.fxml"/>
+    </Tab>
+    <Tab text="Modyfikuj">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+        <fx:include source="modifyDatabaseRecord.fxml"/>
+    </Tab>
 </TabPane>

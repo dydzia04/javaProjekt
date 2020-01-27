@@ -18,7 +18,7 @@
          <TableColumn prefWidth="123.0" text="Dodatkowe inf."/>
       </columns>
    </TableView>
-   <Button fx:id="deleteBtn" layoutX="565.0" layoutY="333.0" mnemonicParsing="false" onAction="#deleteUser"
+   <Button fx:id="deleteBtn" layoutX="565.0" layoutY="333.0" mnemonicParsing="false" onAction="#deleteEmployee"
            text="Usuń"/>
    <Label layoutX="14.0" layoutY="333.0" prefHeight="26.0" prefWidth="252.0"
           text="Zaznacz i wciśnij przycisk aby usunąć"/>
