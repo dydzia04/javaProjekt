@@ -38,17 +38,25 @@ public class showAndSearchController implements Initializable {
   @FXML
   private TableColumn<ShowEmployeeData, String> position;
   @FXML
-  private TableColumn<ShowEmployeeData, Integer> miscData;
+  private TableColumn<ShowEmployeeData, Object> deleteBtn;
+  @FXML
+  private TableColumn<ShowEmployeeData, Object> miscData;
 
   final DatabaseOperations DbOps = new DatabaseOperations();
 
   @FXML
   void searchForSomeone(ActionEvent event) {
-    //TODO: secure input
     String value = tableComboBox.getValue();
     String textToFind = toFindTextField.getText();
 
-    createAlertForEmptyString(value);
+    if (textToFind.isEmpty()) {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Błędne wprowadzenie");
+      alert.setHeaderText("Puste pole tekstowe");
+      alert.setContentText("Proszę wprowadzić odpowiednia wartość.");
+
+      alert.showAndWait();
+    }
 
     if (!toFindTextField.getText().isEmpty()) {
 
@@ -95,19 +103,29 @@ public class showAndSearchController implements Initializable {
     String output = "";
 
     Iterator iterator = emp.listIterator();
-    int found = 0;
+    int empID = 0;
+    int index = 0;
 
     while (iterator.hasNext()) {
       Employee employee = (Employee) iterator.next();
       //noinspection StringConcatenationInLoop
-      found = employee.getId() - 1;
-      databaseTable.requestFocus();
-      databaseTable.getSelectionModel().select(found);
-      databaseTable.getFocusModel().focus(found);
+      empID = employee.getId();
 
       output += "ID: " + employee.getId() + "\n";
       output += "Imię: " + employee.getFirstName() + "\n";
       output += "Nazwisko: " + employee.getSurName() + "\n";
+    }
+
+    for (Object row : databaseTable.getItems()) {
+      ShowEmployeeData e = (ShowEmployeeData) row;
+      System.out.println(e.toString());
+      if (e.getId() == empID) {
+        databaseTable.requestFocus();
+        databaseTable.getSelectionModel().select(index);
+        databaseTable.getFocusModel().focus(index);
+        break;
+      }
+      index++;
     }
 
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -121,18 +139,6 @@ public class showAndSearchController implements Initializable {
 
     alert.showAndWait();
   }
-
-  void createAlertForEmptyString(String str) {
-    if (!str.isEmpty()) {
-      return;
-    }
-    Alert alert = new Alert(Alert.AlertType.ERROR);
-    alert.setTitle("Błędne wprowadzenie");
-    alert.setHeaderText("Niepoprawna opcja");
-    alert.setContentText("Proszę wybrać odpowiednią wartość z listy rozwijanej.");
-
-    alert.showAndWait();
-  }//TODO: make it work, doesn't show anything
 
   void initalizeTable() {
     databaseTable.getColumns().clear();
@@ -150,10 +156,15 @@ public class showAndSearchController implements Initializable {
     position = new TableColumn("Pozycja");
     position.setCellValueFactory(new PropertyValueFactory<>("jobName"));
 
-    miscData = new TableColumn<>("Więcej informacji");
+    miscData = new TableColumn<>("Więcej");
     miscData.setCellValueFactory(new PropertyValueFactory<>("more"));
 
-    databaseTable.getColumns().addAll(ID, name, surName, position, miscData);
+    deleteBtn = new TableColumn<>("Usuń");
+    deleteBtn.setCellValueFactory(new PropertyValueFactory<>("delete"));
+
+    databaseTable.getColumns().addAll(ID, name, surName, position, deleteBtn, miscData);
+    ID.setSortType(TableColumn.SortType.ASCENDING);
+    databaseTable.getSortOrder().add(ID);
   }
 
   void updateTableContent() {
@@ -195,10 +206,16 @@ public class showAndSearchController implements Initializable {
     }
   }
 
+  @FXML
+  void refresh(ActionEvent event) {
+    updateTableContent();
+  }
+
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     databaseTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     tableComboBox.getItems().setAll("ID", "Imię", "Nazwisko");
+    tableComboBox.getSelectionModel().select(0);
     updateTableContent();
   }
 }

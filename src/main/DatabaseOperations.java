@@ -246,7 +246,6 @@ public class DatabaseOperations {
       session.close();
     }
   }
-
   public void updateDepartmentPhoneNumber(Integer ID, String phoneNumber) {
     session = factory.openSession();
     transaction = null;
@@ -264,7 +263,6 @@ public class DatabaseOperations {
       session.close();
     }
   }
-
   public void updateDepartmentEMail(Integer ID, String eMail) {
     session = factory.openSession();
     transaction = null;
@@ -322,14 +320,14 @@ public class DatabaseOperations {
     }
   }
 
-  //TODO: check
-  // need to find ID for deletion matching data in GUI, then give this method his ID
   public void deleteEmployee( Integer ID ){
     session = factory.openSession();
     transaction = null;
     try {
       transaction = session.beginTransaction();
       Employee employee = session.get(Employee.class, ID);
+      session.delete(employee);
+      transaction.commit();
     } catch (HibernateException h) {
       if (transaction != null) transaction.rollback();
       h.printStackTrace();
@@ -337,13 +335,14 @@ public class DatabaseOperations {
       session.close();
     }
   }
-
   public void deleteDepartment(Integer ID) {
     session = factory.openSession();
     transaction = null;
     try {
       transaction = session.beginTransaction();
       Department department = session.get(Department.class, ID);
+      session.delete(department);
+      transaction.commit();
     } catch (HibernateException h) {
       if (transaction != null) transaction.rollback();
       h.printStackTrace();
@@ -354,20 +353,19 @@ public class DatabaseOperations {
   public void deleteJob( Integer ID ){
     session = factory.openSession();
     transaction = null;
-    try{
+    try {
       transaction = session.beginTransaction();
       Job job = session.get(Job.class, ID);
-    }
-    catch ( HibernateException h ){
-      if (transaction!=null) transaction.rollback();
+      session.delete(job);
+      transaction.commit();
+    } catch (HibernateException h) {
+      if (transaction != null) transaction.rollback();
       h.printStackTrace();
-    }
-    finally {
+    } finally {
       session.close();
     }
   }
 
-  //TODO: check
   public Integer createEmployee( String firstName, String SurName, int idDept, int idJob ){
     session = factory.openSession();
     transaction = null;
@@ -384,13 +382,13 @@ public class DatabaseOperations {
     } catch (HibernateException h) {
       if (transaction != null) transaction.rollback();
       h.printStackTrace();
+      h.getCause();
     } finally {
       session.close();
     }
 
     return EmployeeID;
   }
-
   public Integer createDepartment(String address, String phoneNumber, String eMail) {
     session = factory.openSession();
     transaction = null;

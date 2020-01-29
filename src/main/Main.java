@@ -8,20 +8,19 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/main.fxml"));
-        
-        primaryStage.setTitle("CRUD");
-        primaryStage.setScene(new Scene(root, 630, 395));
-        primaryStage.setResizable(false);
-        primaryStage.show();
-    }
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		Parent root = FXMLLoader.load(getClass().getResource("../fxml/main.fxml"));
 
+		primaryStage.setTitle("CRUD");
+		primaryStage.setScene(new Scene(root, 630, 395));
+		primaryStage.setResizable(false);
+		primaryStage.show();
+	}
 
-    public static void main(String[] args) {
-        DatabaseOperations database = new DatabaseOperations();
-
+	private static void test() {
+		DatabaseOperations database = new DatabaseOperations();
+        /*
         System.out.println("\n\n--- Employees ---");
         System.out.println(database.getAllEmployees());
 
@@ -32,24 +31,36 @@ public class Main extends Application {
         System.out.println(database.getAllJobs());
 
         System.out.println("\n\n--- Find name ---");
-        database.findEmployeesByName("Michał");
+        database.findEmployeesByName("P");
         database.findEmployeesByName("Jacek");
-        database.findEmployeesByName("Dawid");
-        database.findEmployeesByName("Marcin");
+
 
         System.out.println("\n\n--- Find Surname ---");
         database.findEmployeesBySurName("Łukowy");
-        database.findEmployeesBySurName("Wart");
-        database.findEmployeesBySurName("Maga");
-        database.findEmployeesBySurName("Duda");
+        database.findEmployeesBySurName("D");
 
         System.out.println("\n\n--- Find ID ---");
         database.findEmployeesByID(1);
         database.findEmployeesByID(3);
         database.findEmployeesByID(5);
-        database.findEmployeesByID(7);
 
-        launch(args);
-    }
+        System.out.println("--- ADD ---");
+        database.createEmployee("Dominik", "Maga", 1, 1);
+
+        database.deleteEmployee(16);
+
+        database.updateEmployeeSurName(3, "Dominik");
+        database.updateEmployeeFirstName(3, "Maga");
+        database.updateEmployeeIdJob(3, 1);
+        database.updateEmployeeIdDept(3,1);
+        */
+		// ---- WORKING ----
+	}
+
+
+	public static void main(String[] args) {
+		test();
+		launch(args);
+	}
 }
 

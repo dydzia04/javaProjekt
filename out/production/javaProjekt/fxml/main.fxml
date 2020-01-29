@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -6,19 +8,15 @@
          prefWidth="630.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1"
          xmlns:fx="http://javafx.com/fxml/1">
     <Tab text="Wyświetl Pracowników">
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+        <AnchorPane fx:id="showEmpAnchor" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
         <fx:include source="showAndSearchDatabase.fxml"/>
     </Tab>
     <Tab text="Dodaj">
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+        <AnchorPane fx:id="showAddAnchor" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
         <fx:include source="addToDatabase.fxml"/>
     </Tab>
-    <Tab text="Usuń">
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
-        <fx:include source="deleteFromDatabase.fxml"/>
-    </Tab>
     <Tab text="Modyfikuj">
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+        <AnchorPane fx:id="showModifyAnchor" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
         <fx:include source="modifyDatabaseRecord.fxml"/>
     </Tab>
 </TabPane>

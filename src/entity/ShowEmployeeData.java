@@ -2,9 +2,11 @@ package entity;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+import main.DatabaseOperations;
 
 public class ShowEmployeeData {
-	private Button more; // TODO: wyśrodkować, zmienić ikonę na jakąś ładną
 	private int id;
 	private String firstName;
 	private String surName;
@@ -13,8 +15,11 @@ public class ShowEmployeeData {
 	private String address;
 	private String phoneNumber;
 	private String eMail;
+	private Button delete;// TODO: center, make it icon
+	private Button more; // TODO: center, make it icon
 
-	public ShowEmployeeData(Button more, int id, String firstName, String surName, String jobName, int salary, String address, String phoneNumber, String eMail) {
+	public ShowEmployeeData(Button delete, Button more, int id, String firstName, String surName, String jobName, int salary, String address, String phoneNumber, String eMail) {
+		this.delete = delete;
 		this.more = more;
 		this.id = id;
 		this.firstName = firstName;
@@ -27,6 +32,25 @@ public class ShowEmployeeData {
 	}
 
 	public ShowEmployeeData() {
+		this.delete = new Button("Usuń");
+		this.delete.setOnAction(event -> {
+			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+			alert.setTitle("Usuwanie");
+			alert.setContentText("Czy usunąć " + this.firstName + " " + this.surName);
+			ButtonType okButton = new ButtonType("Tak", ButtonBar.ButtonData.YES);
+			ButtonType noButton = new ButtonType("Nie", ButtonBar.ButtonData.NO);
+			ButtonType cancelButton = new ButtonType("Anuluj", ButtonBar.ButtonData.CANCEL_CLOSE);
+			alert.getButtonTypes().setAll(okButton, noButton, cancelButton);
+			alert.showAndWait().ifPresent(type -> {
+				if (type == okButton) {
+					DatabaseOperations db = new DatabaseOperations();
+					db.deleteEmployee(this.id);
+				} else {
+					alert.close();
+				}
+			});
+		});
+
 		this.more = new Button("Więcej");
 		this.more.setOnAction(event -> {
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -40,9 +64,8 @@ public class ShowEmployeeData {
 
 			alert.showAndWait();
 		});
-	}
 
-	//public ShowEmployeeData(){}
+	}
 
 	public int getId() {
 		return id;
@@ -63,7 +86,6 @@ public class ShowEmployeeData {
 	public String getSurName() {
 		return surName;
 	}
-
 	public void setSurName(String surName) {
 		this.surName = surName;
 	}
@@ -71,7 +93,6 @@ public class ShowEmployeeData {
 	public String getJobName() {
 		return jobName;
 	}
-
 	public void setJobName(String jobName) {
 		this.jobName = jobName;
 	}
@@ -103,7 +124,6 @@ public class ShowEmployeeData {
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
@@ -114,6 +134,14 @@ public class ShowEmployeeData {
 
 	public void seteMail(String eMail) {
 		this.eMail = eMail;
+	}
+
+	public Button getDelete() {
+		return delete;
+	}
+
+	public void setDelete(Button delete) {
+		this.delete = delete;
 	}
 
 	@Override
