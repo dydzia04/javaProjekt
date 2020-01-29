@@ -15,7 +15,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class modifyController implements Initializable {
+public class modifyEmployeeController implements Initializable {
 
 	final DatabaseOperations DbOps = new DatabaseOperations();
 
@@ -39,12 +39,12 @@ public class modifyController implements Initializable {
 		List found = DbOps.findEmployeesByID(employeeID);
 		Employee e = (Employee) found.get(0);
 
+		reload();
+
 		nameText.setText(e.getFirstName());
 		surnameText.setText(e.getSurName());
 		posChBox.getSelectionModel().select(e.getIdJob() - 1);
 		deptChBox.getSelectionModel().select(e.getIdDept() - 1);
-
-
 	}
 
 	@FXML
@@ -90,6 +90,7 @@ public class modifyController implements Initializable {
 	}
 
 	void setPosition() {
+		posChBox.getItems().clear();
 		List Jobs = DbOps.getAllJobs();
 		List toAdd = new ArrayList();
 		Iterator iteratorJ = Jobs.iterator();
@@ -102,7 +103,8 @@ public class modifyController implements Initializable {
 	}
 
 	void setWorkplace() {
-		List departaments = DbOps.getAllDepartaments();
+		deptChBox.getItems().clear();
+		List departaments = DbOps.getAllDepartments();
 		List toAdd = new ArrayList();
 		Iterator iteratorD = departaments.iterator();
 

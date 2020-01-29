@@ -47,20 +47,19 @@ public class DatabaseOperations {
     }
     return null;
   }
-  public List getAllDepartaments(){
+
+  public List getAllDepartments() {
     session = factory.openSession();
     transaction = null;
     try {
       transaction = session.beginTransaction();
-      List departaments = session.createQuery("FROM Department ").list();
+      List departments = session.createQuery("FROM Department ").list();
       transaction.commit();
-      return departaments;
-    }
-    catch (Exception e){
-      if (transaction!=null) transaction.rollback();
+      return departments;
+    } catch (Exception e) {
+      if (transaction != null) transaction.rollback();
       e.printStackTrace();
-    }
-    finally {
+    } finally {
       session.close();
     }
     return null;
@@ -150,22 +149,182 @@ public class DatabaseOperations {
     return null;
   }
 
-  public void updateEmployeeFirstName( Integer ID, String firstName ){
+  public List findDepartamentByID(int ID) {
+    List temp = new ArrayList();
+    try {
+      List departaments = this.getAllDepartments();
+      Iterator iterator = departaments.listIterator();
+      Department department;
+
+      while (iterator.hasNext()) {
+        department = (Department) iterator.next();
+        if (department.getId() == ID) {
+          System.out.println(department);
+          temp.add(department);
+        }
+      }
+      return temp;
+    } catch (Exception e) {
+      System.err.println("ID search error");
+      e.printStackTrace();
+      e.getCause();
+    }
+    return null;
+  }
+
+  public List findDepartmentByAddress(String address) {
+    List temp = new ArrayList();
+    try {
+      List departments = this.getAllDepartments();
+      Iterator iterator = departments.listIterator();
+      Department department;
+
+      while (iterator.hasNext()) {
+        if ((department = (Department) iterator.next()).getAddress().contains(address)) {
+          System.out.println(department);
+          temp.add(department);
+        }
+      }
+
+      return temp;
+    } catch (Exception e) {
+      System.err.println("Surname search error");
+      e.printStackTrace();
+      e.getCause();
+    }
+    return null;
+  }
+
+  public List findDepartmentByPhoneNumber(String phoneNumber) {
+    List temp = new ArrayList();
+    try {
+      List departments = this.getAllDepartments();
+      Iterator iterator = departments.listIterator();
+      Department department;
+
+      while (iterator.hasNext()) {
+        if ((department = (Department) iterator.next()).getPhoneNumber().equals(phoneNumber)) {
+          System.out.println(department);
+          temp.add(department);
+        }
+      }
+
+      return temp;
+    } catch (Exception e) {
+      System.err.println("Surname search error");
+      e.printStackTrace();
+      e.getCause();
+    }
+    return null;
+  }
+
+  public List findDepartmentByEMail(String email) {
+    List temp = new ArrayList();
+    try {
+      List departments = this.getAllDepartments();
+      Iterator iterator = departments.listIterator();
+      Department department;
+
+      while (iterator.hasNext()) {
+        if ((department = (Department) iterator.next()).getAddress().contains(email)) {
+          System.out.println(department);
+          temp.add(department);
+        }
+      }
+
+      return temp;
+    } catch (Exception e) {
+      System.err.println("Surname search error");
+      e.printStackTrace();
+      e.getCause();
+    }
+    return null;
+  }
+
+  public List findJobsByID(int ID) {
+    List temp = new ArrayList();
+    try {
+      List jobs = this.getAllJobs();
+      Iterator iterator = jobs.listIterator();
+      Job job;
+
+      while (iterator.hasNext()) {
+        job = (Job) iterator.next();
+        if (job.getId() == ID) {
+          System.out.println(job);
+          temp.add(job);
+        }
+      }
+      return temp;
+    } catch (Exception e) {
+      System.err.println("ID search error");
+      e.printStackTrace();
+      e.getCause();
+    }
+    return null;
+  }
+
+  public List findJobsByPosition(String position) {
+    List temp = new ArrayList();
+    try {
+      List jobs = this.getAllJobs();
+      Iterator iterator = jobs.listIterator();
+      Job job;
+
+      while (iterator.hasNext()) {
+        job = (Job) iterator.next();
+        if (job.getName().equals(position)) {
+          System.out.println(job);
+          temp.add(job);
+        }
+      }
+      return temp;
+    } catch (Exception e) {
+      System.err.println("ID search error");
+      e.printStackTrace();
+      e.getCause();
+    }
+    return null;
+  }
+
+  public List findJobsBySalary(int salary) {
+    List temp = new ArrayList();
+    try {
+      List jobs = this.getAllJobs();
+      Iterator iterator = jobs.listIterator();
+      Job job;
+
+      while (iterator.hasNext()) {
+        job = (Job) iterator.next();
+        if (job.getSalary() == salary) {
+          System.out.println(job);
+          temp.add(job);
+        }
+      }
+      return temp;
+    } catch (Exception e) {
+      System.err.println("ID search error");
+      e.printStackTrace();
+      e.getCause();
+    }
+    return null;
+  }
+
+  // --- UPDATE ---
+  public void updateEmployeeFirstName(Integer ID, String firstName) {
     session = factory.openSession();
     transaction = null;
 
-    try{
+    try {
       transaction = session.beginTransaction();
       Employee employee = session.get(Employee.class, ID);
       employee.setFirstName(firstName);
       session.update(employee);
       transaction.commit();
-    }
-    catch ( HibernateException h ){
-      if( transaction!=null ) transaction.rollback();
+    } catch (HibernateException h) {
+      if (transaction != null) transaction.rollback();
       h.printStackTrace();
-    }
-    finally {
+    } finally {
       session.close();
     }
   }
@@ -318,6 +477,7 @@ public class DatabaseOperations {
     }
   }
 
+  // --- DELETE ---
   public void deleteEmployee( Integer ID ){
     session = factory.openSession();
     transaction = null;
@@ -364,6 +524,7 @@ public class DatabaseOperations {
     }
   }
 
+  // --- CREATE ---
   public Integer createEmployee( String firstName, String SurName, int idDept, int idJob ){
     session = factory.openSession();
     transaction = null;

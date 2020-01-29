@@ -9,38 +9,44 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import main.DatabaseOperations;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class showAndSearchController implements Initializable {
+public class showAndSearchEmployeeController implements Initializable {
 
-  @FXML
-  private ComboBox<String> tableComboBox;
-  @FXML
-  private TextField toFindTextField;
+	@FXML
+	private ComboBox<String> tableComboBox;
+	@FXML
+	private TextField toFindTextField;
+	@FXML
+	private Button refreshBtn;
 
-  @FXML
-  private TableView<ShowEmployeeData> databaseTable;
-  @SuppressWarnings("FieldCanBeLocal")
-  @FXML
-  private TableColumn<ShowEmployeeData, Integer> ID;
-  @SuppressWarnings("FieldCanBeLocal")
-  @FXML
-  private TableColumn<ShowEmployeeData, String> name;
-  @SuppressWarnings("FieldCanBeLocal")
-  @FXML
-  private TableColumn<ShowEmployeeData, String> surName;
-  @SuppressWarnings("FieldCanBeLocal")
-  @FXML
-  private TableColumn<ShowEmployeeData, String> position;
-  @FXML
-  private TableColumn<ShowEmployeeData, Object> deleteBtn;
-  @FXML
-  private TableColumn<ShowEmployeeData, Object> miscData;
+	@FXML
+	private TableView<ShowEmployeeData> databaseTable;
+	@SuppressWarnings("FieldCanBeLocal")
+	@FXML
+	private TableColumn<ShowEmployeeData, Integer> ID;
+	@SuppressWarnings("FieldCanBeLocal")
+	@FXML
+	private TableColumn<ShowEmployeeData, String> name;
+	@SuppressWarnings("FieldCanBeLocal")
+	@FXML
+	private TableColumn<ShowEmployeeData, String> surName;
+	@SuppressWarnings("FieldCanBeLocal")
+	@FXML
+	private TableColumn<ShowEmployeeData, String> position;
+	@FXML
+	private TableColumn<ShowEmployeeData, Object> deleteBtn;
+	@FXML
+	private TableColumn<ShowEmployeeData, Object> miscData;
 
   final DatabaseOperations DbOps = new DatabaseOperations();
 
@@ -143,43 +149,42 @@ public class showAndSearchController implements Initializable {
     databaseTable.getColumns().clear();
     databaseTable.getItems().clear();
 
-    ID = new TableColumn("ID");
-    ID.setCellValueFactory(new PropertyValueFactory<>("id"));
+	  ID = new TableColumn("ID");
+	  ID.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-    name = new TableColumn("Imię");
-    name.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+	  name = new TableColumn("Imię");
+	  name.setCellValueFactory(new PropertyValueFactory<>("firstName"));
 
-    surName = new TableColumn("Nazwisko");
-    surName.setCellValueFactory(new PropertyValueFactory<>("surName"));
+	  surName = new TableColumn("Nazwisko");
+	  surName.setCellValueFactory(new PropertyValueFactory<>("surName"));
 
-    position = new TableColumn("Pozycja");
-    position.setCellValueFactory(new PropertyValueFactory<>("jobName"));
+	  position = new TableColumn("Pozycja");
+	  position.setCellValueFactory(new PropertyValueFactory<>("jobName"));
 
-    miscData = new TableColumn<>("Więcej");
-    miscData.setCellValueFactory(new PropertyValueFactory<>("more"));
+	  miscData = new TableColumn<>("Więcej");
+	  miscData.setCellValueFactory(new PropertyValueFactory<>("more"));
 
-    deleteBtn = new TableColumn<>("Usuń");
-    deleteBtn.setCellValueFactory(new PropertyValueFactory<>("delete"));
+	  deleteBtn = new TableColumn<>("Usuń");
+	  deleteBtn.setCellValueFactory(new PropertyValueFactory<>("delete"));
 
-    databaseTable.getColumns().addAll(ID, name, surName, position, deleteBtn, miscData);
-    ID.setSortType(TableColumn.SortType.ASCENDING);
-    databaseTable.getSortOrder().add(ID);
+//    databaseTable.getColumns().addAll(ID, name, surName, position, deleteBtn, miscData);
+	  databaseTable.getColumns().addAll(name, surName, position, deleteBtn, miscData);
   }
 
   void updateTableContent() {
-    List employees = DbOps.getAllEmployees();
-    List jobs = DbOps.getAllJobs();
-    List depts = DbOps.getAllDepartaments();
+	  List employees = DbOps.getAllEmployees();
+	  List jobs = DbOps.getAllJobs();
+	  List depts = DbOps.getAllDepartments();
 
-    initalizeTable();
+	  initalizeTable();
 
-    Iterator iterator = employees.iterator();
+	  Iterator iterator = employees.iterator();
 
-    while (iterator.hasNext()) {
-      Employee e = (Employee) iterator.next();
-      ShowEmployeeData data = new ShowEmployeeData();
+	  while (iterator.hasNext()) {
+		  Employee e = (Employee) iterator.next();
+		  ShowEmployeeData data = new ShowEmployeeData();
 
-      data.setId(e.getId());
+		  data.setId(e.getId());
       data.setFirstName(e.getFirstName());
       data.setSurName(e.getSurName());
 
@@ -212,9 +217,19 @@ public class showAndSearchController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    databaseTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-    tableComboBox.getItems().setAll("ID", "Imię", "Nazwisko");
-    tableComboBox.getSelectionModel().select(0);
-    updateTableContent();
+	  databaseTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+//    tableComboBox.getItems().setAll("ID", "Imię", "Nazwisko");
+	  tableComboBox.getItems().setAll("Imię", "Nazwisko");
+	  tableComboBox.getSelectionModel().select(0);
+	  updateTableContent();
+	  try {
+		  FileInputStream inputStream = new FileInputStream("src/img/003-refresh.png");
+		  Image image = new Image(inputStream);
+		  ImageView imageView = new ImageView(image);
+		  refreshBtn.setText("");
+		  refreshBtn.setGraphic(imageView);
+	  } catch (FileNotFoundException e) {
+		  e.printStackTrace();
+	  }
   }
 }

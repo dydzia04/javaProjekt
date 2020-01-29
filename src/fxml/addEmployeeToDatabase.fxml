@@ -8,7 +8,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0"
       prefWidth="630.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="controllers.addController">
+      fx:controller="controllers.addEmployeeController">
     <Label layoutX="180.0" layoutY="100.0" prefHeight="30.0" prefWidth="90.0" text="Imię"/>
     <Label layoutX="180.0" layoutY="130.0" prefHeight="30.0" prefWidth="90.0" text="Nazwisko"/>
     <Label layoutX="180.0" layoutY="160.0" prefHeight="30.0" prefWidth="90.0" text="Pozycja"/>

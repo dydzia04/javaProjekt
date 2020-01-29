@@ -11,7 +11,7 @@ import main.DatabaseOperations;
 import java.net.URL;
 import java.util.*;
 
-public class addController implements Initializable {
+public class addEmployeeController implements Initializable {
 
 	final DatabaseOperations DbOps = new DatabaseOperations();
 
@@ -60,20 +60,6 @@ public class addController implements Initializable {
 				alert.close();
 			}
 		});
-
-
-		if (alert.getResult() == ButtonType.YES) {
-			System.out.println(alert.getResult());
-			DbOps.createEmployee(name, surname, idDpt, idJob);
-			nameText.setText("");
-			surnameText.setText("");
-			choosePositionComBox.getSelectionModel().select(0);
-			chooseDeptComBox.getSelectionModel().select(0);
-		} else if (alert.getResult() == ButtonType.NO) {
-			alert.close();
-		} else {
-			alert.close();
-		}
 	}
 
 	void loadPositions() {
@@ -88,7 +74,7 @@ public class addController implements Initializable {
 	}
 
 	void loadDepts() {
-		List dept = DbOps.getAllDepartaments();
+		List dept = DbOps.getAllDepartments();
 		List toAdd = new ArrayList();
 		Iterator dIterator = dept.iterator();
 		while (dIterator.hasNext()) {

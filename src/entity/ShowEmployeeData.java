@@ -4,7 +4,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import main.DatabaseOperations;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class ShowEmployeeData {
 	private int id;
@@ -33,6 +38,15 @@ public class ShowEmployeeData {
 
 	public ShowEmployeeData() {
 		this.delete = new Button("Usuń");
+		try {
+			FileInputStream inputStream = new FileInputStream("src/img/002-trash.png");
+			Image image = new Image(inputStream);
+			ImageView imageView = new ImageView(image);
+			this.delete = new Button("", imageView);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
 		this.delete.setOnAction(event -> {
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			alert.setTitle("Usuwanie");
@@ -52,6 +66,14 @@ public class ShowEmployeeData {
 		});
 
 		this.more = new Button("Więcej");
+		try {
+			FileInputStream inputStream = new FileInputStream("src/img/001-more.png");
+			Image image = new Image(inputStream);
+			ImageView imageView = new ImageView(image);
+			this.more = new Button("", imageView);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		this.more.setOnAction(event -> {
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
 			alert.setTitle("ID: " + this.id);

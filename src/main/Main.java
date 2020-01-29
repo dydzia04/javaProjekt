@@ -13,7 +13,7 @@ public class Main extends Application {
 		Parent root = FXMLLoader.load(getClass().getResource("../fxml/main.fxml"));
 
 		primaryStage.setTitle("CRUD");
-		primaryStage.setScene(new Scene(root, 630, 395));
+		primaryStage.setScene(new Scene(root, 663, 400));
 		primaryStage.setResizable(false);
 		primaryStage.show();
 	}
@@ -59,6 +59,8 @@ public class Main extends Application {
 
 
 	public static void main(String[] args) {
+
+		//Icons made by https://www.flaticon.com/authors/srip
 		test();
 		launch(args);
 	}
