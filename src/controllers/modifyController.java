@@ -6,9 +6,7 @@ import entity.Job;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import main.DatabaseOperations;
 
 import java.net.URL;
@@ -55,11 +53,25 @@ public class modifyController implements Initializable {
 			createError();
 			return;
 		}
-		DbOps.updateEmployeeFirstName(employeeID, nameText.getText());
-		DbOps.updateEmployeeSurName(employeeID, surnameText.getText());
-		DbOps.updateEmployeeIdDept(employeeID, deptChBox.getSelectionModel().getSelectedIndex() + 1);
-		DbOps.updateEmployeeIdJob(employeeID, posChBox.getSelectionModel().getSelectedIndex() + 1);
 
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		alert.setTitle("Modyfikacja");
+		alert.setHeaderText("Czy chcesz zmienić dane użytkownika na: ");
+		alert.setContentText("Imię: " + nameText.getText() + "\nNazwisko: " + surnameText.getText() + "\nPozycja: " + posChBox.getSelectionModel().getSelectedItem() + "\nMiejsce pracy: " + deptChBox.getSelectionModel().getSelectedItem());
+		ButtonType okButton = new ButtonType("Tak", ButtonBar.ButtonData.YES);
+		ButtonType noButton = new ButtonType("Nie", ButtonBar.ButtonData.NO);
+		ButtonType cancelButton = new ButtonType("Anuluj", ButtonBar.ButtonData.CANCEL_CLOSE);
+		alert.getButtonTypes().setAll(okButton, noButton, cancelButton);
+		alert.showAndWait().ifPresent(type -> {
+			if (type == okButton) {
+				DbOps.updateEmployeeFirstName(employeeID, nameText.getText());
+				DbOps.updateEmployeeSurName(employeeID, surnameText.getText());
+				DbOps.updateEmployeeIdDept(employeeID, deptChBox.getSelectionModel().getSelectedIndex() + 1);
+				DbOps.updateEmployeeIdJob(employeeID, posChBox.getSelectionModel().getSelectedIndex() + 1);
+			} else {
+				alert.close();
+			}
+		});
 		reload();
 	}
 

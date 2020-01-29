@@ -150,8 +150,6 @@ public class DatabaseOperations {
     return null;
   }
 
-  //TODO: check
-  // need to get ID for updating
   public void updateEmployeeFirstName( Integer ID, String firstName ){
     session = factory.openSession();
     transaction = null;

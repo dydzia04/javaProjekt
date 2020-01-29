@@ -13,7 +13,7 @@ import java.util.*;
 
 public class addController implements Initializable {
 
-	DatabaseOperations DbOps = new DatabaseOperations();
+	final DatabaseOperations DbOps = new DatabaseOperations();
 
 	@FXML
 	private TextField nameText;

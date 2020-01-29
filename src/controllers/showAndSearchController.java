@@ -108,7 +108,6 @@ public class showAndSearchController implements Initializable {
 
     while (iterator.hasNext()) {
       Employee employee = (Employee) iterator.next();
-      //noinspection StringConcatenationInLoop
       empID = employee.getId();
 
       output += "ID: " + employee.getId() + "\n";

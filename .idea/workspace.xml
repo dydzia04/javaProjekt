@@ -1,40 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="86ce478b-de7d-416a-9514-a028989989c6" name="Default Changelist" comment="Finished Employee operations. Need to add graphics and support for other tables.">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql_bak.sql" afterDir="false" />
+    <list default="true" id="86ce478b-de7d-416a-9514-a028989989c6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/javaProjekt/controllers/addController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/javaProjekt/controllers/addController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/javaProjekt/controllers/deleteController.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/javaProjekt/controllers/modifyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/javaProjekt/controllers/modifyController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/javaProjekt/controllers/showAndSearchController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/javaProjekt/controllers/showAndSearchController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/javaProjekt/entity/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/javaProjekt/entity/Employee.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/javaProjekt/entity/Job.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/javaProjekt/entity/Job.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/javaProjekt/entity/ShowEmployeeData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/javaProjekt/entity/ShowEmployeeData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/javaProjekt/fxml/addToDatabase.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/javaProjekt/fxml/addToDatabase.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/javaProjekt/fxml/deleteFromDatabase.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/javaProjekt/fxml/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/javaProjekt/fxml/main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/javaProjekt/fxml/modifyDatabaseRecord.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/javaProjekt/fxml/modifyDatabaseRecord.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/javaProjekt/fxml/showAndSearchDatabase.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/javaProjekt/fxml/showAndSearchDatabase.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/javaProjekt/main/DatabaseOperations.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/javaProjekt/main/DatabaseOperations.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/javaProjekt/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/javaProjekt/main/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/addController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/addController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/deleteController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/modifyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/modifyController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/showAndSearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/showAndSearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/DeleteEmployeeData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Department.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Job.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Job.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/ShowEmployeeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/ShowEmployeeData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fxml/addToDatabase.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/fxml/addToDatabase.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fxml/deleteFromDatabase.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fxml/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/fxml/main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fxml/modifyDatabaseRecord.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/fxml/modifyDatabaseRecord.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fxml/showAndSearchDatabase.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/fxml/showAndSearchDatabase.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/DatabaseOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DatabaseOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +195,7 @@
       <workItem from="1579782533715" duration="20334000" />
       <workItem from="1579971036212" duration="7438000" />
       <workItem from="1580125021091" duration="9082000" />
-      <workItem from="1580293426219" duration="13520000" />
+      <workItem from="1580293426219" duration="14371000" />
     </task>
     <task id="LOCAL-00001" summary="Initalized lists in find methods of DatabaseOperations.">
       <created>1579975350387</created>
@@ -234,7 +211,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579982637068</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Finished Employee operations. Need to add graphics and support for other tables.">
+      <created>1580307656398</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1580307656398</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -297,38 +281,38 @@
       <screen x="0" y="27" width="1366" height="701" />
     </state>
     <state x="416" y="126" width="524" height="500" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1366.701@0.27.1366.701" timestamp="1580305161180" />
-    <state x="413" y="245" width="530" height="282" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1580304003919">
+    <state x="413" y="245" width="530" height="282" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1580307911939">
       <screen x="0" y="27" width="1366" height="701" />
     </state>
-    <state x="413" y="245" width="530" height="282" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.27.1366.701@0.27.1366.701" timestamp="1580304003919" />
-    <state x="212" y="27" width="932" height="701" key="CommitChangelistDialog2" timestamp="1580307563533">
+    <state x="413" y="245" width="530" height="282" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.27.1366.701@0.27.1366.701" timestamp="1580307911939" />
+    <state x="212" y="27" width="932" height="701" key="CommitChangelistDialog2" timestamp="1580307655982">
       <screen x="0" y="27" width="1366" height="701" />
     </state>
-    <state x="212" y="27" width="932" height="701" key="CommitChangelistDialog2/0.27.1366.701@0.27.1366.701" timestamp="1580307563533" />
+    <state x="212" y="27" width="932" height="701" key="CommitChangelistDialog2/0.27.1366.701@0.27.1366.701" timestamp="1580307655982" />
     <state x="618" y="187" width="498" height="377" key="FileChooserDialogImpl" timestamp="1579782776064">
       <screen x="0" y="27" width="1366" height="701" />
     </state>
     <state x="618" y="187" width="498" height="377" key="FileChooserDialogImpl/0.27.1366.701@0.27.1366.701" timestamp="1579782776064" />
     <state x="724" y="206" width="424" height="484" key="FileChooserDialogImpl/0.900.1366.768/0.0.1600.900@0.0.1600.900" timestamp="1579517941239" />
-    <state width="1324" height="219" key="GridCell.Tab.0.bottom" timestamp="1580307622136">
+    <state width="1324" height="219" key="GridCell.Tab.0.bottom" timestamp="1580308345303">
       <screen x="0" y="27" width="1366" height="701" />
     </state>
-    <state width="1324" height="219" key="GridCell.Tab.0.bottom/0.27.1366.701@0.27.1366.701" timestamp="1580307622136" />
+    <state width="1324" height="219" key="GridCell.Tab.0.bottom/0.27.1366.701@0.27.1366.701" timestamp="1580308345303" />
     <state width="1558" height="229" key="GridCell.Tab.0.bottom/0.900.1366.768/0.0.1600.900@0.0.1600.900" timestamp="1579518611667" />
-    <state width="1324" height="219" key="GridCell.Tab.0.center" timestamp="1580307622136">
+    <state width="1324" height="219" key="GridCell.Tab.0.center" timestamp="1580308345302">
       <screen x="0" y="27" width="1366" height="701" />
     </state>
-    <state width="1324" height="219" key="GridCell.Tab.0.center/0.27.1366.701@0.27.1366.701" timestamp="1580307622136" />
+    <state width="1324" height="219" key="GridCell.Tab.0.center/0.27.1366.701@0.27.1366.701" timestamp="1580308345302" />
     <state width="1558" height="229" key="GridCell.Tab.0.center/0.900.1366.768/0.0.1600.900@0.0.1600.900" timestamp="1579518611667" />
-    <state width="1324" height="219" key="GridCell.Tab.0.left" timestamp="1580307622135">
+    <state width="1324" height="219" key="GridCell.Tab.0.left" timestamp="1580308345301">
       <screen x="0" y="27" width="1366" height="701" />
     </state>
-    <state width="1324" height="219" key="GridCell.Tab.0.left/0.27.1366.701@0.27.1366.701" timestamp="1580307622135" />
+    <state width="1324" height="219" key="GridCell.Tab.0.left/0.27.1366.701@0.27.1366.701" timestamp="1580308345301" />
     <state width="1558" height="229" key="GridCell.Tab.0.left/0.900.1366.768/0.0.1600.900@0.0.1600.900" timestamp="1579518611667" />
-    <state width="1324" height="219" key="GridCell.Tab.0.right" timestamp="1580307622136">
+    <state width="1324" height="219" key="GridCell.Tab.0.right" timestamp="1580308345302">
       <screen x="0" y="27" width="1366" height="701" />
     </state>
-    <state width="1324" height="219" key="GridCell.Tab.0.right/0.27.1366.701@0.27.1366.701" timestamp="1580307622136" />
+    <state width="1324" height="219" key="GridCell.Tab.0.right/0.27.1366.701@0.27.1366.701" timestamp="1580308345302" />
     <state width="1558" height="229" key="GridCell.Tab.0.right/0.900.1366.768/0.0.1600.900@0.0.1600.900" timestamp="1579518611667" />
     <state width="1324" height="204" key="GridCell.Tab.1.bottom" timestamp="1580130152759">
       <screen x="0" y="27" width="1366" height="701" />
