@@ -4,25 +4,25 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="663.0" rotateGraphic="true" side="LEFT" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.mainController">
-  <tabs>
-    <Tab fx:id="employeesTab" text="Pracownicy">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-        <fx:include source="employeesForm.fxml" />
-      </content>
-    </Tab>
-    <Tab fx:id="departmentsTab" text="Wydziały">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-        <fx:include source="departamentsForm.fxml" />
-      </content>
-    </Tab>
-      <Tab fx:id="jobsTab" text="Pozycje">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-          <fx:include source="jobsForm.fxml" />
-        </content>
-      </Tab>
-  </tabs>
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="663.0" rotateGraphic="true" side="LEFT" stylesheets="@../css/tabStyle.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.mainController">
+    <tabs>
+        <Tab fx:id="employeesTab" text="Pracownicy">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <fx:include source="employeesForm.fxml" />
+            </content>
+        </Tab>
+        <Tab fx:id="departmentsTab" text="Wydziały">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <fx:include source="departamentsForm.fxml" />
+            </content>
+        </Tab>
+        <Tab fx:id="jobsTab" text="Pozycje">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <fx:include source="jobsForm.fxml" />
+            </content>
+        </Tab>
+    </tabs>
 </TabPane>

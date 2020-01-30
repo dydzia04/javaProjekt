@@ -16,7 +16,7 @@ public class ShowDepartamentData {
 	private String adress;
 	private String phoneNumber;
 	private String email;
-	private Button delete;// TODO: center, make it icon
+	private Button delete;
 
 	public ShowDepartamentData(int id, String adress, String phoneNumber, String email, Button delete) {
 		this.id = id;

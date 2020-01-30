@@ -15,7 +15,7 @@ public class ShowJobData {
 	private int id;
 	private String jobName;
 	private int salary;
-	private Button delete;// TODO: center, make it icon
+	private Button delete;
 
 	public ShowJobData(int id, String jobName, int salary, Button delete, Button more) {
 		this.id = id;

@@ -6,8 +6,8 @@
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
          nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="663.0" rotateGraphic="true" side="LEFT"
-         tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-         fx:controller="controllers.mainController">
+         stylesheets="@../css/tabStyle.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1"
+         xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.mainController">
     <tabs>
         <Tab fx:id="employeesTab" text="Pracownicy">
             <content>

@@ -20,8 +20,8 @@ public class ShowEmployeeData {
 	private String address;
 	private String phoneNumber;
 	private String eMail;
-	private Button delete;// TODO: center, make it icon
-	private Button more; // TODO: center, make it icon
+	private Button delete;
+	private Button more;
 
 	public ShowEmployeeData(Button delete, Button more, int id, String firstName, String surName, String jobName, int salary, String address, String phoneNumber, String eMail) {
 		this.delete = delete;
