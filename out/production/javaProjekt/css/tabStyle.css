@@ -1,0 +1,49 @@
+/*
+dark
+#272643
+white
+#ffffff
+blues
+    light
+    #e3f6f5
+    medium
+    #bae8e8
+    dark
+    #2c698d
+*/
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0.3;
+}
+
+.tab-pane .tab {
+    -fx-background-color: #bae8e8;
+    -fx-alignment: CENTER;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #e3f6f5;
+}
+
+.tab .tab-label {
+    -fx-alignment: CENTER;
+}
+
+.table-view .cell {
+    -fx-alignment: CENTER;
+}
+
+.button {
+    -fx-background-color: #bae8e8;
+}
+
+.button:pressed {
+    -fx-background-color: #2c698d;
+}
+
+.table-row-cell {
+    -fx-background-color: #ffffff;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #e3f6f5;
+}
